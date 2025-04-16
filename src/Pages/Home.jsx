@@ -5,6 +5,8 @@ import Hero from '../components/Hero'
 import Hero2 from '../components/Hero2'
 import Viidi from './viidi'
 import User from './User'
+import Button from './Button'
+  
  
 
 const Home = () => {
@@ -15,6 +17,7 @@ const Home = () => {
        <Hero2 />
        <Viidi />
        <User />
+       <Button />
     </div>
   )
 }
