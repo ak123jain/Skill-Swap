@@ -45,6 +45,20 @@ const VideoLecture = () => {
           <p className="text-center col-span-full text-gray-500">No videos uploaded yet.</p>
         )}
       </div>
+
+      <div className="flex justify-center items-center min-h-[300px] px-4 mt-96">
+  <div className="bg-gradient-to-br from-slate-800 to-gray-900 text-white rounded-2xl p-6 shadow-xl border border-pink-500/30 backdrop-blur-md w-full max-w-2xl relative">
+    <p className="text-center text-xl font-semibold leading-relaxed">
+      Video uploaded by an admin who <span className="text-pink-400">understands the concept</span> you want to study.
+    </p>
+
+    {/* Optional pink-white glow border at the bottom */}
+    <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-white via-pink-500 to-white blur-md opacity-80 rounded-full animate-pulse"></div>
+  </div>
+</div>
+
+
+
     </div>
   );
 };
