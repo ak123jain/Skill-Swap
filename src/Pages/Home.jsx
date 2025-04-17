@@ -6,6 +6,7 @@ import Hero2 from '../components/Hero2'
 import Viidi from './viidi'
 import User from './User'
 import Button from './Button'
+import Footer from './Footer'
   
  
 
@@ -18,6 +19,7 @@ const Home = () => {
        <Viidi />
        <User />
        <Button />
+       <Footer />
     </div>
   )
 }

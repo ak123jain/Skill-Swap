@@ -9,6 +9,7 @@ import Match from './Pages/Match'
 import VideoComponent from './Pages/VideoComponent'
 import VideoRecorder from './Pages/VideoRecorder'
 import VideoLecture from './Pages/VideoLecture'
+import GetUser from './Pages/GetUser'
 
  
  const App = () => {
@@ -23,7 +24,8 @@ import VideoLecture from './Pages/VideoLecture'
           <Route path="/videocall" element={<VideoComponent />} />
           <Route path="/videorecord/:id" element={<VideoRecorder />} />
           <Route path="/videolecture" element={<VideoLecture />} />
-          
+          <Route path="/getuser" element={<GetUser />} />
+           
        </Routes>
      </div>
    )

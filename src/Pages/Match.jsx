@@ -192,25 +192,31 @@ const Match = () => {
                     animate={{ opacity: 1, height: 'auto' }}
                     className="mt-4 pt-4 border-t border-gray-200"
                   >
-                    <div className="flex justify-around">
-                       <Link to={`/videorecord/${user._id}`} >
-                       <button className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors">
-                        <MessageCircle size={18} />
-                        <span>Record Lecture</span>
-                      </button>
-                       </Link>
-                       <Link to='/videocall' >
-                       <button className="flex items-center space-x-1 px-3 py-2 rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors">
-                        <UserPlus size={18} />
-                        <span>Connect</span>
-                      </button>
-                       </Link>
-                       <Link to='/videolecture' >
-                       <button  >
-                        Get video lecture
-                       </button>
-                       </Link>
-                    </div>
+
+<div className="flex justify-between items-center gap-3 px-1 mt-4 ">
+  <Link to={`/videorecord/${user._id}`} className="flex-1">
+    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-100/80 text-blue-700 hover:bg-blue-200 hover:shadow-blue-200 shadow-sm transition-all duration-300">
+      <MessageCircle size={18} />
+      <span className="text-sm font-medium">Record</span>
+    </button>
+  </Link>
+
+  <Link to="/videocall" className="flex-1">
+    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-purple-100/80 text-purple-700 hover:bg-purple-200 hover:shadow-purple-200 shadow-sm transition-all duration-300">
+      <UserPlus size={18} />
+      <span className="text-sm font-medium">Connect</span>
+    </button>
+  </Link>
+
+  <Link to="/videolecture" className="flex-1">
+    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-pink-100/80 text-pink-700 hover:bg-pink-200 hover:shadow-pink-200 shadow-sm transition-all duration-300">
+      <span className="text-sm font-medium">Video</span>
+    </button>
+  </Link>
+</div>
+
+                      
+
                   </motion.div>
                 )}
               </motion.div>
