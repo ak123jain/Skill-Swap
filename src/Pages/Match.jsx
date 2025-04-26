@@ -78,7 +78,7 @@ const Match = () => {
   const fetchUsers = async () => {
     const token = localStorage.getItem('accessToken');
     try {
-      const response = await axios.get('http://localhost:8000/match/getmatch', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/match/getmatch`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

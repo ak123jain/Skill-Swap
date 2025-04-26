@@ -7,7 +7,7 @@ const GetUser = () => {
 
     const handle = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/user/getalluser', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/getalluser`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }

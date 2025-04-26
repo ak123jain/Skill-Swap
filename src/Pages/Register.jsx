@@ -102,7 +102,7 @@ export default function SkillSwapRegister() {
 
       if (avatar) formData.append("avatar", avatar);
 
-      const res = await axios.post("http://localhost:8000/user/register", formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/register`, formData);
       console.log("✅ Submitted successfully:", res.data);
       setRegistrationSuccess(true);
       alert("Registered successfully!");

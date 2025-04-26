@@ -5,7 +5,7 @@ const Logout = () => {
 
     const onsubmit = async () =>{
         try {
-            const response = await axios.post('http://localhost:8000/user/logout' , {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/user/logout` , {
                 headers : {
                     Authorization : `Bearer ${localStorage.getItem('accessToken')}`
                 }

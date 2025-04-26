@@ -13,7 +13,7 @@ const User = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/user/getuser');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/getuser`);
       console.log('Fetched users:', response.data.data);
       setUsers(response.data.data.user || []);
     } catch (err) {
