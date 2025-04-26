@@ -74,7 +74,7 @@ const VideoRecorder = () => {
     try {
       setIsUploading(true);
       setUploadSuccess(false); // Reset success state before new upload
-      const response = await axios.post(`http://localhost:8000/record/recordvideo/${id}`, formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/record/recordvideo/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
