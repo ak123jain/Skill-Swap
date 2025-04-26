@@ -8,7 +8,7 @@ const VideoLecture = () => {
 
     const token = localStorage.getItem("accessToken")
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/record/getvideo` , {
+      const response = await axios.get("http://localhost:8000/record/getvideo" , {
         headers : {
             Authorization : `Bearer ${token}`
         }
