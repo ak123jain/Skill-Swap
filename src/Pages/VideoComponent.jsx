@@ -166,7 +166,7 @@ export const VideoComponent = () => {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
       stream.getTracks().forEach(track => track.stop()); // Stop after confirming access
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/twillo/sendot`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/twillo/sendotp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
