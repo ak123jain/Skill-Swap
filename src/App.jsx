@@ -10,6 +10,7 @@ import VideoComponent from './Pages/VideoComponent'
 import VideoRecorder from './Pages/VideoRecorder'
 import VideoLecture from './Pages/VideoLecture'
 import GetUser from './Pages/GetUser'
+import Logout from './Pages/Logout'
 
  
  const App = () => {
@@ -25,7 +26,7 @@ import GetUser from './Pages/GetUser'
           <Route path="/videorecord/:id" element={<VideoRecorder />} />
           <Route path="/videolecture" element={<VideoLecture />} />
           <Route path="/getuser" element={<GetUser />} />
-           
+          <Route path="/userlogout" element={<Logout />} />
        </Routes>
      </div>
    )

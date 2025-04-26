@@ -1,4 +1,4 @@
- import axios from 'axios';
+import axios from 'axios';
 import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -6,6 +6,8 @@ const VideoRecorder = () => {
   const [videoBlob, setVideoBlob] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadSuccess, setUploadSuccess] = useState(false); // New state for upload success
   const [stream, setStream] = useState(null);
 
   const videoRef = useRef(null);
@@ -38,6 +40,7 @@ const VideoRecorder = () => {
 
       mediaRecorder.start();
       setIsRecording(true);
+      setUploadSuccess(false); // Reset success state when starting a new recording
     } catch (err) {
       alert('Please allow camera and microphone access.');
       console.error('Error accessing media devices.', err);
@@ -69,6 +72,8 @@ const VideoRecorder = () => {
     const token = localStorage.getItem('accessToken');
 
     try {
+      setIsUploading(true);
+      setUploadSuccess(false); // Reset success state before new upload
       const response = await axios.post(`http://localhost:8000/record/recordvideo/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -76,14 +81,19 @@ const VideoRecorder = () => {
         },
       });
       console.log('Upload success:', response.data);
+      setUploadSuccess(true); // Set success to true after successful upload
     } catch (error) {
       console.error('Upload failed:', error);
+      setUploadSuccess(false);
+    } finally {
+      setIsUploading(false);
     }
   };
 
   const reset = () => {
     setVideoBlob(null);
     setVideoURL(null);
+    setUploadSuccess(false); // Reset success state
     if (videoRef.current) videoRef.current.srcObject = null;
   };
 
@@ -123,14 +133,27 @@ const VideoRecorder = () => {
 
         {!isRecording && videoBlob && (
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-            <button
-              onClick={uploadVideo}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
-            >
-              Upload
-            </button>
+            {uploadSuccess ? (
+              <div className="flex items-center gap-2 bg-green-100 text-green-700 px-6 py-3 rounded-full font-semibold shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Upload Successful!</span>
+              </div>
+            ) : (
+              <button
+                onClick={uploadVideo}
+                disabled={isUploading}
+                className={`${
+                  isUploading ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-purple-500 to-pink-500'
+                } text-white px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg`}
+              >
+                {isUploading ? 'Uploading...' : 'Upload'}
+              </button>
+            )}
             <button
               onClick={reset}
+              disabled={isUploading}
               className="bg-yellow-400 text-purple-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition shadow-lg"
             >
               Record Again

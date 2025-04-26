@@ -379,7 +379,7 @@ const Navbar = () => {
                       { label: 'Profile', icon: <User size={16} className="mr-2 text-pink-400" />, to: '/getuser' },
                       { label: 'Login', icon: <LogIn size={16} className="mr-2 text-green-400" />, to: '/login' },
                       { label: 'Register', icon: <UserPlus size={16} className="mr-2 text-yellow-400" />, to: '/register' },
-                      { label: 'Logout', icon: <LogOut size={16} className="mr-2 text-cyan-400" />, to: '/logout' },
+                      { label: 'Logout', icon: <LogOut size={16} className="mr-2 text-cyan-400" />, to: '/userlogout' },
                     ].map((item, index) => (
                       <motion.div
                         key={item.label}
