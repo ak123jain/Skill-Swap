@@ -135,6 +135,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User as UserIcon, X, Search, RefreshCw, ChevronRight, MessageCircle, Heart, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const User = () => {
   const [users, setUsers] = useState([]);
@@ -290,17 +291,22 @@ const User = () => {
                       </div>
                     )}
 
-                    <div className={`relative py-2 px-6 rounded-2xl overflow-hidden ${hoveredCard === user._id ? 'bg-gradient-to-r from-pink-500 to-purple-600' : 'bg-black border border-pink-500/20'} transition-all duration-300`}>
-                      {hoveredCard === user._id && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 blur-md"></div>
-                      )}
-                      <div className="relative z-10 flex items-center gap-1">
-                        <span className={`text-sm font-medium ${hoveredCard === user._id ? 'text-white' : 'text-pink-300'}`}>
-                          {hoveredCard === user._id ? 'View Profile' : 'Profile'}
-                        </span>
-                        <ChevronRight size={16} className={hoveredCard === user._id ? 'text-white' : 'text-purple-300'} />
-                      </div>
-                    </div>
+
+<Link to={`/profile/${user._id}`} className="relative py-2 px-6 rounded-2xl overflow-hidden transition-all duration-300 
+  ${hoveredCard === user._id ? 'bg-gradient-to-r from-pink-500 to-purple-600' : 'bg-black border border-pink-500/20'}"
+>
+  {hoveredCard === user._id && (
+    <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 blur-md"></div>
+  )}
+  <div className="relative z-10 flex items-center gap-1">
+    <span className={`text-sm font-medium ${hoveredCard === user._id ? 'text-white' : 'text-pink-300'}`}>
+      {hoveredCard === user._id ? 'View Profile' : 'Profile'}
+    </span>
+    <ChevronRight size={16} className={hoveredCard === user._id ? 'text-white' : 'text-purple-300'} />
+  </div>
+</Link>
+
+
                   </div>
                 </div>
               </div>
