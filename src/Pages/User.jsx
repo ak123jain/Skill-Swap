@@ -151,7 +151,7 @@ const User = () => {
       setLoading(false);
     } catch (err) {
       setError('Failed to fetch users');
-      setLoading(false);
+      setLoading(false, err);
     }
   };
 
