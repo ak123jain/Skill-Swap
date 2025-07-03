@@ -34,7 +34,9 @@ const Button = () => {
             </div>
 
             {/* Button Text */}
+            <Link to='/getmatch' >
             <span className="text-lg sm:text-xl font-semibold text-white z-10">Match Profile</span>
+            </Link>
 
             {/* Particle Effects */}
             {isHovered && (
