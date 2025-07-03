@@ -5,7 +5,7 @@ const Button = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+    <div className="min-h-screen bg-black flex items-center justify-center">
       <div 
         className="relative group"
         onMouseEnter={() => setIsHovered(true)}
